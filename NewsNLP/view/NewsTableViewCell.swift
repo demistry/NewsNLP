@@ -14,6 +14,8 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var cellContentView: UIView!
     @IBOutlet weak var newsImageView: UIImageView!
     @IBOutlet weak var newsTitle: UILabel!
+    @IBOutlet weak var newsDescription: UILabel!
+    
     
     class var nib : UINib {
         return UINib(nibName: "NewsTableViewCell", bundle: Bundle.main)

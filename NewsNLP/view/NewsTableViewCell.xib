@@ -27,13 +27,23 @@
                         <rect key="frame" x="0.0" y="123" width="359" height="70"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AT&amp;T accidentally streamed 'Game of Thrones' hours before it was supposed to on Sunday - CNBC" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYC-tu-CjH">
-                                <rect key="frame" x="8" y="0.0" width="343" height="57.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <rect key="frame" x="8" y="0.0" width="343" height="31.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5y-Aw-fq0">
+                                <rect key="frame" x="8" y="34" width="343" height="24"/>
+                                <string key="text">Missoula County, Montana, commissioners are expected to approve a resolution that would require bitcoin mines to offset their energy use with renewables.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.77405286815068497" green="0.77014661815068497" blue="0.87224422089041098" alpha="0.77635380993150682" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Y5y-Aw-fq0" firstAttribute="top" secondItem="KYC-tu-CjH" secondAttribute="bottom" constant="2.5" id="FwE-Sr-4Pb"/>
+                            <constraint firstItem="Y5y-Aw-fq0" firstAttribute="leading" secondItem="MST-1L-d0J" secondAttribute="leading" constant="8" id="GYV-7g-9Tf"/>
+                            <constraint firstAttribute="trailing" secondItem="Y5y-Aw-fq0" secondAttribute="trailing" constant="8" id="IgX-pI-4Ac"/>
                             <constraint firstAttribute="height" constant="70" id="OCN-Nj-mDv"/>
                             <constraint firstAttribute="trailing" secondItem="KYC-tu-CjH" secondAttribute="trailing" constant="8" id="jdN-1q-Nzp"/>
                             <constraint firstItem="KYC-tu-CjH" firstAttribute="top" secondItem="MST-1L-d0J" secondAttribute="top" id="qtu-EM-GUb"/>
@@ -54,6 +64,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="cellContentView" destination="H2p-sc-9uM" id="lLg-XV-szS"/>
+                <outlet property="newsDescription" destination="Y5y-Aw-fq0" id="uPK-dL-4f2"/>
                 <outlet property="newsImageView" destination="H8J-vT-3T3" id="JH8-WR-gaf"/>
                 <outlet property="newsTitle" destination="KYC-tu-CjH" id="kpi-Qz-iod"/>
             </connections>
