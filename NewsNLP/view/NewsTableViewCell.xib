@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsTableViewCell" rowHeight="194" id="KGk-i7-Jjw" customClass="NewsTableViewCell" customModule="NewsNLP" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="359" height="194"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="359" height="193.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JonSNow" translatesAutoresizingMaskIntoConstraints="NO" id="H8J-vT-3T3">
+                        <rect key="frame" x="0.0" y="0.0" width="359" height="194"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MST-1L-d0J">
+                        <rect key="frame" x="0.0" y="123" width="359" height="70"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AT&amp;T accidentally streamed 'Game of Thrones' hours before it was supposed to on Sunday - CNBC" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYC-tu-CjH">
+                                <rect key="frame" x="8" y="0.0" width="343" height="57.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.77405286815068497" green="0.77014661815068497" blue="0.87224422089041098" alpha="0.4611247859589041" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="70" id="OCN-Nj-mDv"/>
+                            <constraint firstAttribute="trailing" secondItem="KYC-tu-CjH" secondAttribute="trailing" constant="8" id="jdN-1q-Nzp"/>
+                            <constraint firstItem="KYC-tu-CjH" firstAttribute="top" secondItem="MST-1L-d0J" secondAttribute="top" id="qtu-EM-GUb"/>
+                            <constraint firstItem="KYC-tu-CjH" firstAttribute="leading" secondItem="MST-1L-d0J" secondAttribute="leading" constant="8" id="z9Y-nF-0KC"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="MST-1L-d0J" secondAttribute="bottom" constant="0.5" id="0DR-Vn-Au4"/>
+                    <constraint firstItem="MST-1L-d0J" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="EIc-B5-XtC"/>
+                    <constraint firstAttribute="trailing" secondItem="H8J-vT-3T3" secondAttribute="trailing" id="HLy-ag-09m"/>
+                    <constraint firstAttribute="bottom" secondItem="H8J-vT-3T3" secondAttribute="bottom" constant="-0.5" id="Mt5-iv-cil"/>
+                    <constraint firstAttribute="trailing" secondItem="MST-1L-d0J" secondAttribute="trailing" id="eWs-SA-emB"/>
+                    <constraint firstItem="H8J-vT-3T3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="sew-36-Hfl"/>
+                    <constraint firstItem="H8J-vT-3T3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="zZH-X0-cxy"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cellContentView" destination="H2p-sc-9uM" id="lLg-XV-szS"/>
+                <outlet property="newsImageView" destination="H8J-vT-3T3" id="JH8-WR-gaf"/>
+                <outlet property="newsTitle" destination="KYC-tu-CjH" id="kpi-Qz-iod"/>
+            </connections>
+            <point key="canvasLocation" x="165.94202898550725" y="94.419642857142847"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="JonSNow" width="1910" height="1000"/>
+    </resources>
+</document>
