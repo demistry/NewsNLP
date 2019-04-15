@@ -35,10 +35,11 @@
                                     </switch>
                                     <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="9hD-eB-5fG">
                                         <rect key="frame" x="8" y="8" width="331" height="56"/>
+                                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
                                 </subviews>
-                                <color key="backgroundColor" red="0.49260550969315064" green="0.48855006048219179" blue="0.74574719233150688" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <constraints>
                                     <constraint firstItem="9hD-eB-5fG" firstAttribute="leading" secondItem="J5M-jK-lFd" secondAttribute="leading" constant="8" id="0fZ-mB-uZr"/>
                                     <constraint firstAttribute="height" constant="72" id="Pg1-dV-ep9"/>

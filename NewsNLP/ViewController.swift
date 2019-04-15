@@ -8,6 +8,7 @@
 
 import UIKit
 import PINRemoteImage
+import NaturalLanguage
 
 class ViewController: UIViewController {
 
@@ -17,7 +18,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        hideKeyboardWhenTappedAround()
         tableView.delegate = self
         tableView.register(NewsTableViewCell.nib, forCellReuseIdentifier: "NewsTableViewCell")
         
@@ -33,6 +34,16 @@ class ViewController: UIViewController {
             }
         }
         
+    }
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 
 
@@ -52,9 +63,11 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource{
             return UITableViewCell()
         }
         
+        
         cell.newsImageView.pin_updateWithProgress = true
         cell.newsImageView.pin_setImage(from: news.articles[indexPath.row].urlToImage)
-        cell.newsTitle.text = news.articles[indexPath.row].title
+        //cell.newsTitle.text = news.articles[indexPath.row].title
+        cell.newsTitle.attributedText = getColoredNameEntity(titleString: news.articles[indexPath.row].title)
         
         return cell
     }
@@ -63,6 +76,26 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource{
         return 194
     }
     
-    
+    private func getColoredNameEntity(titleString : String)->NSMutableAttributedString{
+        let tagger = NSLinguisticTagger(tagSchemes: [.nameType,.lexicalClass], options: 0)
+        tagger.string = titleString
+        let options : NSLinguisticTagger.Options = [.omitPunctuation, .omitWhitespace, .joinNames]
+        let tags : [NSLinguisticTag] = [.personalName, .organizationName, .placeName, .noun]
+        let range = NSRange(location: 0, length: titleString.utf16.count)
+        let attributedString = NSMutableAttributedString(string: titleString)
+        tagger.enumerateTags(in: range, unit: .word, scheme: .nameType, options: options) { (tagOpt, tokenRange, stop) in
+            guard let tag = tagOpt, tags.contains(tag) else{
+                return
+            }
+            
+            let name = (titleString as NSString).substring(with: tokenRange)
+            print("name is \(name)")
+            let attributes = [NSAttributedString.Key.foregroundColor : UIColor.blue]
+            let range = (titleString as NSString).range(of: name)
+            attributedString.addAttributes(attributes, range: range)
+        }
+        return attributedString
+        
+    }
 }
 
