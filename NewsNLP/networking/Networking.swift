@@ -37,6 +37,7 @@ class Networking {
         }
         
         task.resume()
+        print("Progress is \(task.progress.fractionCompleted)")
         
     }
 }

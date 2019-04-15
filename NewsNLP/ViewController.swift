@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PINRemoteImage
 
 class ViewController: UIViewController {
 
@@ -24,8 +25,11 @@ class ViewController: UIViewController {
             switch result {
             case .success(let newsObject):
                 self.newsObject = newsObject
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             case .failure(let error):
-                print("Failure in receiving error")
+                print("Failure in receiving with error:\(error.localizedDescription) ")
             }
         }
         
@@ -36,14 +40,21 @@ class ViewController: UIViewController {
 
 extension ViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        guard let news = newsObject else{
+            return 0
+        }
+        return news.articles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellOpt = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as? NewsTableViewCell
-        guard let cell = cellOpt else{
+        guard let cell = cellOpt, let news = newsObject, news.articles.count > 0 else{
             return UITableViewCell()
         }
+        
+        cell.newsImageView.pin_updateWithProgress = true
+        cell.newsImageView.pin_setImage(from: news.articles[indexPath.row].urlToImage)
+        cell.newsTitle.text = news.articles[indexPath.row].title
         
         return cell
     }
