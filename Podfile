@@ -6,6 +6,7 @@ target 'NewsNLP' do
   use_frameworks!
   pod 'PINRemoteImage', '~> 3.0.0-beta'
   pod 'JGProgressHUD'
+  pod 'SwiftyJSON'
   # Pods for NewsNLP
 
 end

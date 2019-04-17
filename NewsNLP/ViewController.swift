@@ -9,22 +9,33 @@
 import UIKit
 import PINRemoteImage
 import NaturalLanguage
+import Speech
 
-class ViewController: UIViewController {
+class ViewController: UIViewController , SFSpeechRecognizerDelegate{
 
     @IBOutlet weak var tableView: UITableView!
     
     fileprivate var newsObject : NewsObject?
     fileprivate var switchState : Bool = false
+    fileprivate var speechRecognizer : SFSpeechRecognizer!
+    fileprivate let audioEngine = AVAudioEngine()
+    var inputNode : AVAudioInputNode!
+    var isFinal = false
+    var recognitionTask : SFSpeechRecognitionTask!
+    var recognitionRequest : SFSpeechAudioBufferRecognitionRequest!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.navigationController?.isNavigationBarHidden = true
+        
+        speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en_us"))
+        speechRecognizer.delegate = self
+        inputNode = configureAudioSession()
         hideKeyboardWhenTappedAround()
         tableView.delegate = self
         tableView.register(NewsTableViewCell.nib, forCellReuseIdentifier: "NewsTableViewCell")
         
-        Networking.getNews { (result) in
+        Networking.getNews(queryString: "a") { (result) in
             switch result {
             case .success(let newsObject):
                 self.newsObject = newsObject
@@ -40,10 +51,81 @@ class ViewController: UIViewController {
     
     @IBAction func `switch`(_ sender: UISwitch) {
         switchState = sender.isOn
+        if switchState {
+            startRecording()
+        } else{
+            stopRecording()
+        }
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
+    
+    private func stopRecording(){
+        recognitionTask.cancel()
+        recognitionRequest.endAudio()
+        self.audioEngine.stop()
+        inputNode.removeTap(onBus: 0)
+    }
+    
+    private func startRecording(){
+        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+        
+        recognitionRequest.shouldReportPartialResults = true
+        
+        let recordingFormat = inputNode.outputFormat(forBus: 0)
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
+            self.recognitionRequest.append(buffer)
+        }
+        
+        audioEngine.prepare()
+        try! audioEngine.start()
+        
+        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { (result, error) in
+            
+            if let result = result {
+                // Update the text view with the results.
+                Networking.getNews(queryString: result.bestTranscription.formattedString) { (result) in
+                    switch result {
+                    case .success(let newsObject):
+                        self.newsObject = newsObject
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                        self.startRecording()
+                    case .failure(let error):
+                        print("Failure in receiving with error:\(error.localizedDescription) ")
+                    }
+                }
+                
+                self.stopRecording()
+                //self.textView.text = result.bestTranscription.formattedString
+                self.isFinal = result.isFinal
+            }
+            
+//            if error != nil || self.isFinal {
+//                // Stop recognizing speech if there is a problem.
+//                self.audioEngine.stop()
+//                self.inputNode.removeTap(onBus: 0)
+//
+//                //recognitionRequest = nil
+//                //recognitionTask = nil
+//
+//                //self.recordButton.isEnabled = true
+//                //serecordButton.setTitle("Start Recording", for: [])
+//            }
+        }
+        
+    }
+    
+    private func configureAudioSession()-> AVAudioInputNode{
+        let audioSession = AVAudioSession.sharedInstance()
+        try! audioSession.setCategory(.record, mode: .measurement, options: .duckOthers)
+        try! audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+        return audioEngine.inputNode
+        
+    }
+    
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         tap.cancelsTouchesInView = false

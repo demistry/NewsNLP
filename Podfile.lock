@@ -15,10 +15,12 @@ PODS:
   - PINRemoteImage/PINCache (3.0.0-beta.14):
     - PINCache (= 3.0.1-beta.7)
     - PINRemoteImage/Core
+  - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - JGProgressHUD
   - PINRemoteImage (~> 3.0.0-beta)
+  - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -26,13 +28,15 @@ SPEC REPOS:
     - PINCache
     - PINOperation
     - PINRemoteImage
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
   PINCache: 7cb9ae068c8f655717f7c644ef1dff9fd573e979
   PINOperation: a6219e6fc9db9c269eb7a7b871ac193bcf400aac
   PINRemoteImage: 81bbff853acc71c6de9e106e9e489a791b8bbb08
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 3188743ac1146cf94ed6d24997c90aec127947b7
+PODFILE CHECKSUM: a320d63bf34169aef21e71479e9c8cca93844274
 
 COCOAPODS: 1.5.3

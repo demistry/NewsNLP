@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class Networking {
     typealias completionHandler = (Result<NewsObject,Error>) -> Void
     
-    static func getNews(completionHandler : @escaping completionHandler){
-        let urlOpt = URL(string: "https://newsapi.org/v2/everything?q=a&apiKey=9bb10c9febb943c3b9aa09de7a9e2a71")
+    static func getNews(queryString : String, completionHandler : @escaping completionHandler){
+        let urlOpt = URL(string: "https://newsapi.org/v2/everything?q=\(queryString)&apiKey=9bb10c9febb943c3b9aa09de7a9e2a71")
         guard let url = urlOpt else{
             return
         }
@@ -30,6 +31,8 @@ class Networking {
                 print("Failed here")
                 return
             }
+            //print("Data received is \(data.string)")
+            print("Response is \(JSON(data))")
             let decoder = JSONDecoder()
             let newsObject = try! decoder.decode(NewsObject.self, from: data)
             completionHandler(.success(newsObject))

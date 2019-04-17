@@ -15,17 +15,17 @@ struct NewsObject : Decodable {
 }
 
 struct ArticleObject : Decodable{
-    var source : SourceObject
-    var author : String
+    var source : SourceObject?
+    var author : String?
     var title : String
     var description : String
     var url : URL
-    var urlToImage : URL
-    var publishedAt : String
-    var content : String?
+    var urlToImage : URL?
+    var publishedAt : String?
+    var content : String??
 }
 
 struct SourceObject : Decodable{
     var id : String?
-    var name : String
+    var name : String?
 }
