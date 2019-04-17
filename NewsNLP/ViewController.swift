@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.navigationController?.isNavigationBarHidden = true
         hideKeyboardWhenTappedAround()
         tableView.delegate = self
         tableView.register(NewsTableViewCell.nib, forCellReuseIdentifier: "NewsTableViewCell")
@@ -88,6 +89,18 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 194
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let article = newsObject!.articles[indexPath.row]
+        performSegue(withIdentifier: "showWebView", sender: article)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showWebView"{
+            let destination = segue.destination as! WebViewController
+            destination.newsObject = sender as? ArticleObject
+        }
     }
     
     private func getColoredNameEntity(titleString : String)->NSMutableAttributedString{

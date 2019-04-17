@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		340C54342267886D00884334 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340C54332267886D00884334 /* WebViewController.swift */; };
+		340C543622678C6D00884334 /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340C543522678C6D00884334 /* ProgressIndicator.swift */; };
+		340C543822678CCA00884334 /* AlertDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340C543722678CCA00884334 /* AlertDisplay.swift */; };
+		340C543A226790BA00884334 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340C5439226790B900884334 /* WebKit.framework */; };
 		342B9E2C2264C81F00C43FC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342B9E2B2264C81F00C43FC6 /* AppDelegate.swift */; };
 		342B9E2E2264C81F00C43FC6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342B9E2D2264C81F00C43FC6 /* ViewController.swift */; };
 		342B9E312264C81F00C43FC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 342B9E2F2264C81F00C43FC6 /* Main.storyboard */; };
@@ -21,6 +25,10 @@
 
 /* Begin PBXFileReference section */
 		1B2E2D819E8B415E53AAF7DF /* Pods-NewsNLP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsNLP.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewsNLP/Pods-NewsNLP.release.xcconfig"; sourceTree = "<group>"; };
+		340C54332267886D00884334 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		340C543522678C6D00884334 /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
+		340C543722678CCA00884334 /* AlertDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDisplay.swift; sourceTree = "<group>"; };
+		340C5439226790B900884334 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		342B9E282264C81F00C43FC6 /* NewsNLP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsNLP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		342B9E2B2264C81F00C43FC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		342B9E2D2264C81F00C43FC6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				340C543A226790BA00884334 /* WebKit.framework in Frameworks */,
 				EF5D2589D61EF2C173DB818F /* Pods_NewsNLP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,6 +96,9 @@
 				342B9E322264C82200C43FC6 /* Assets.xcassets */,
 				342B9E342264C82200C43FC6 /* LaunchScreen.storyboard */,
 				342B9E372264C82200C43FC6 /* Info.plist */,
+				340C54332267886D00884334 /* WebViewController.swift */,
+				340C543522678C6D00884334 /* ProgressIndicator.swift */,
+				340C543722678CCA00884334 /* AlertDisplay.swift */,
 			);
 			path = NewsNLP;
 			sourceTree = "<group>";
@@ -119,6 +131,7 @@
 		EC10043E67DA1FD69B2156FB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				340C5439226790B900884334 /* WebKit.framework */,
 				6017E143619105248B51CFF3 /* Pods_NewsNLP.framework */,
 			);
 			name = Frameworks;
@@ -225,6 +238,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NewsNLP/Pods-NewsNLP-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
 				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
 				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
@@ -233,6 +247,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
@@ -249,7 +264,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				340C543622678C6D00884334 /* ProgressIndicator.swift in Sources */,
 				342B9E2E2264C81F00C43FC6 /* ViewController.swift in Sources */,
+				340C54342267886D00884334 /* WebViewController.swift in Sources */,
+				340C543822678CCA00884334 /* AlertDisplay.swift in Sources */,
 				342B9E4B2264E00C00C43FC6 /* Networking.swift in Sources */,
 				342B9E2C2264C81F00C43FC6 /* AppDelegate.swift in Sources */,
 				342B9E432264D2A000C43FC6 /* NewsTableViewCell.swift in Sources */,

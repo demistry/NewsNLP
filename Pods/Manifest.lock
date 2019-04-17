@@ -1,4 +1,5 @@
 PODS:
+  - JGProgressHUD (2.0.3)
   - PINCache (3.0.1-beta.7):
     - PINCache/Arc-exception-safe (= 3.0.1-beta.7)
     - PINCache/Core (= 3.0.1-beta.7)
@@ -16,19 +17,22 @@ PODS:
     - PINRemoteImage/Core
 
 DEPENDENCIES:
+  - JGProgressHUD
   - PINRemoteImage (~> 3.0.0-beta)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - JGProgressHUD
     - PINCache
     - PINOperation
     - PINRemoteImage
 
 SPEC CHECKSUMS:
+  JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
   PINCache: 7cb9ae068c8f655717f7c644ef1dff9fd573e979
   PINOperation: a6219e6fc9db9c269eb7a7b871ac193bcf400aac
   PINRemoteImage: 81bbff853acc71c6de9e106e9e489a791b8bbb08
 
-PODFILE CHECKSUM: 480faa1a67fe04811799e176a0f3a61f97112903
+PODFILE CHECKSUM: 3188743ac1146cf94ed6d24997c90aec127947b7
 
 COCOAPODS: 1.5.3
